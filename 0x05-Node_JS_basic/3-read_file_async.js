@@ -8,7 +8,7 @@ const countStudents = async (path) => {
   try {
     // Read file asynchronously and wait for it to complete
     const data = await fs.readFile(path, 'utf-8');
-    const lines = data.trim().split('\n').filter(line => line.trim() !== ''); // Remove empty lines
+    const lines = data.trim().split('\n').filter((line) => line.trim() !== ''); // Remove empty lines
 
     if (lines.length <= 1) {
       console.log('No students found');
@@ -20,7 +20,7 @@ const countStudents = async (path) => {
     const cs = [];
     const swe = [];
 
-    for (let i = 1; i < lines.length; i++) { // Start from 1 to skip the header
+    for (let i = 1; i < lines.length; i += 1) { // Start from 1 to skip the header
       const fields = lines[i].split(',');
       if (fields[3] === 'CS') {
         cs.push(fields[0]);
