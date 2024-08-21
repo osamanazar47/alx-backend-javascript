@@ -7,13 +7,13 @@ const fs = require('fs');
 const countStudents = (path) => {
   try {
     const data = fs.readFileSync(path, 'utf-8');
-	const lines = data.split('\n').filter(line => line.trim() !== '');
-	console.log(`Number of students: ${lines.length - 1}`)
-	const cs = []
-	const swe = []
-	for (let i = 0; i < lines.length; i++) {
+    const lines = data.split('\n').filter(line => line.trim() !== '');
+    console.log(`Number of students: ${lines.length - 1}`)
+    const cs = []
+    const swe = []
+    for (let i = 0; i < lines.length; i++) {
       let fields = lines[i].split(',')
-	  if (fields[3] == 'CS') {
+      if (fields[3] == 'CS') {
         cs.push(fields[0])
 	  }
 	  if (fields[3] == 'SWE') {
