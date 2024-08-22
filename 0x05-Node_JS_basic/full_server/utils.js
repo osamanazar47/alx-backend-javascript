@@ -14,7 +14,7 @@ const readDatabase = async(path) => {
       CS: [],
 	  SWE: [],
 	};
-	for (i = 1; i < lines.length; i += 1) {
+	for (let i = 1; i < lines.length; i += 1) {
       const fields = lines[i].split(',');
       const first_name = fields[0];
 	  const field = fields[3];
@@ -27,7 +27,8 @@ const readDatabase = async(path) => {
 	}
     return result;
   } catch (err) {
-    console.error('File is not accessible');
+    console.error(`Error reading file: ${err.message}`);
+    return { message: 'File is not accessible' };
   }
 };
 

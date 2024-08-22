@@ -2,8 +2,9 @@ import readDatabase from "../utils";
 
 class StudentsController {
   static async getAllStudents (request, response) {
+    const dataPath = process.argv.length > 2 ? process.argv[2] : 'database.csv';
     try {
-      const data = await readDatabase('database.csv');
+      const data = await readDatabase(dataPath);
       if (!data || data.message) {
         return response.status(500).send('Cannot load the database');
       }
@@ -24,12 +25,13 @@ class StudentsController {
   }
 
   static async getAllStudentsByMajor (request, response) {
-    const major = request.query.major;
+    const major = request.params.major;
     if (major !== 'CS' && major !== 'SWE') {
       return response.status(500).send('Major parameter must be CS or SWE');
 	}
+    const dataPath = process.argv.length > 2 ? process.argv[2] : 'database.csv';
     try {
-      const data = await readDatabase('database.csv');
+      const data = await readDatabase(dataPath);
       if (!data || data.message) {
         return response.status(500).send('Cannot load the database');
 	  }
@@ -45,4 +47,4 @@ class StudentsController {
   }
 }
 
-module.exports = getAllStudents;
+module.exports = StudentsController;
