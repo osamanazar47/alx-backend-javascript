@@ -1,6 +1,5 @@
 const { expect } = require('chai');
-import { describe } from 'mocha';
-import calculateNumber from './1-calcul';
+import calculateNumber from './2-calcul_chai';
 
 describe('calculateNumber', function () {
   describe('#add', function () {
